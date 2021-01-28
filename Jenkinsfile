@@ -2,6 +2,7 @@ pipeline {
 	agent any
 	options {
 		timestamps()
+		timeout (time: 5, unit: "SECONDS")
 	}
 	stages {
 		stage("Build"){
