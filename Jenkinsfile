@@ -2,7 +2,7 @@ pipeline {
 	agent any
 	options {
 		timestamps()
-		timeout (time: 1, unit: "SECONDS")
+		timeout (time: 1, unit: "MINITES")
 	}
 
 	stages {
@@ -19,7 +19,6 @@ pipeline {
 		stage("Deploy"){
 			steps {
 				echo "Deploying the application..."
-				DEPLOYY()
 			}
 		}
 	}
