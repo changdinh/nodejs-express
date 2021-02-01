@@ -16,9 +16,10 @@ pipeline {
 				echo "Testing the application..."
 			}
 		}
-		stageS("Deploy"){
+		stage("Deploy"){
 			steps {
 				echo "Deploying the application..."
+				DEPLOYY()
 			}
 		}
 	}
