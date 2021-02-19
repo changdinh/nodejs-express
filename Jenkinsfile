@@ -23,18 +23,6 @@ pipeline {
 		}
 	}
 
-	mail(
-        bcc: '',
-        body: "<p>your body</p>",
-        cc: '',
-        charset: 'UTF-8',
-        from: '',
-        mimeType: 'text/html',
-        replyTo: '',
-        subject: "your subject",
-        to: "changthi.dinh2@dxc.com"
-	)
-
 	post {
 		always {
 			echo "Alway show this message."
@@ -55,7 +43,17 @@ pipeline {
 			echo "Pipeline has been failed."
 		}
 		success {
-			echo "Successful!"
+			mail(
+        		bcc: '',
+        		body: "<p>your body</p>",
+        		cc: '',
+        		charset: 'UTF-8',
+        		from: '',
+        		mimeType: 'text/html',
+        		replyTo: '',
+        		subject: "your subject",
+        		to: "changthi.dinh2@dxc.com"
+			)
 		}
 		unstable {
 			echo "Unstable."
