@@ -25,7 +25,7 @@ pipeline {
 
 	post {
 		always {
-			echo "Alway show this message."
+			emailext body: 'testing',subject: 'testing', to: 'changthi.dinh2@dxc.com'
 		}
 		changed {
 			echo "There are some changes from previous run."
@@ -43,17 +43,7 @@ pipeline {
 			echo "Pipeline has been failed."
 		}
 		success {
-			mail(
-        		bcc: '',
-        		body: "<p>your body</p>",
-        		cc: '',
-        		charset: 'UTF-8',
-        		from: '',
-        		mimeType: 'text/html',
-        		replyTo: '',
-        		subject: "your subject",
-        		to: "changthi.dinh2@dxc.com"
-			)
+			echo "Successful!"
 		}
 		unstable {
 			echo "Unstable."
