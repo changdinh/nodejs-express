@@ -23,6 +23,18 @@ pipeline {
 		}
 	}
 
+	mail(
+        bcc: '',
+        body: "<p>your body</p>",
+        cc: '',
+        charset: 'UTF-8',
+        from: '',
+        mimeType: 'text/html',
+        replyTo: '',
+        subject: "your subject",
+        to: "changthi.dinh2@dxc.com"
+	)
+
 	post {
 		always {
 			echo "Alway show this message."
@@ -43,7 +55,7 @@ pipeline {
 			echo "Pipeline has been failed."
 		}
 		success {
-			emailext body: 'testing for sending email result',subject: 'deployment result', to: 'changthi.dinh2@dxc.com'
+			echo "Successful!"
 		}
 		unstable {
 			echo "Unstable."
