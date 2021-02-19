@@ -22,7 +22,9 @@ pipeline {
 			}
 		}
 		stage("Email Notification"){
-			mail bcc: '', body: 'Deployment result', cc: '', from: '', replyTo: '', subject: 'Testing sending email', to: 'changdt.eps@gmail.com'
+			steps {
+				mail bcc: '', body: 'Deployment result', cc: '', from: '', replyTo: '', subject: 'Testing sending email', to: 'changdt.eps@gmail.com'
+			}
 		}
 	}
 
