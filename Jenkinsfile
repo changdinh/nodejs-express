@@ -44,9 +44,7 @@ pipeline {
 		}
 		success {
 			echo "Successful!",
-			mail to: 'changthi.dinh2@dxc.com',
-			subject: "Deployment Result: ${currentBuild.fullDisplayName}",
-			body: "Deploy successful with ${env.BUILD_URL}"
+			emailext body: 'testing for sending email result',subject: 'deployment result', to: 'changthi.dinh2@dxc.com'
 		}
 		unstable {
 			echo "Unstable."
