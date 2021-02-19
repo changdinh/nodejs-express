@@ -43,7 +43,10 @@ pipeline {
 			echo "Pipeline has been failed."
 		}
 		success {
-			echo "Successful!"
+			echo "Successful!",
+			mail to: 'changthi.dinh2@dxc.com',
+			subject: "Deployment Result: ${currentBuild.fullDisplayName}",
+			body: "Deploy successful with ${env.BUILD_URL}"
 		}
 		unstable {
 			echo "Unstable."
