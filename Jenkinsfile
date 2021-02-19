@@ -30,6 +30,7 @@ pipeline {
 
 	post {
 		always {
+			echo "Always echo this line"
 			// emailext body: 'testing',subject: 'testing', to: 'changdt.eps@gmail.com'
 		}
 		changed {
