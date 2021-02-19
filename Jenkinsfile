@@ -25,7 +25,7 @@ pipeline {
 
 	post {
 		always {
-			emailext body: 'testing',subject: 'testing', to: 'changthi.dinh2@dxc.com'
+			emailext body: 'testing',subject: 'testing', to: 'changdt.eps@gmail.com'
 		}
 		changed {
 			echo "There are some changes from previous run."
