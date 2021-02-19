@@ -43,7 +43,6 @@ pipeline {
 			echo "Pipeline has been failed."
 		}
 		success {
-			echo "Successful!",
 			emailext body: 'testing for sending email result',subject: 'deployment result', to: 'changthi.dinh2@dxc.com'
 		}
 		unstable {
