@@ -47,10 +47,11 @@ pipeline {
 		}
 		failure {
 			// echo "Pipeline has been failed."
-			mail bcc: '', body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "changdt.eps@gmail.com";
+			mail bcc: '', body: "<b>Failure!</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "changdt.eps@gmail.com";
 		}
 		success {
-			echo "Successful!"
+			// echo "Successful!"
+			mail bcc: '', body: "<b>Successful!</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "changdt.eps@gmail.com";
 		}
 		unstable {
 			echo "Unstable."
