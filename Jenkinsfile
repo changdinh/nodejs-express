@@ -37,13 +37,13 @@ pipeline {
 			// emailext body: 'testing',subject: 'testing', to: 'changdt.eps@gmail.com'
 			script {
 				if (currentBuild.currentResult == 'FAILURE') {
-					echo "FAILURE!"
+					mail bcc: '', body: "<b>The build failure!</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Notify on ALWAYS section: Project name -> ${env.JOB_NAME}", to: "changdt.eps@gmail.com";
 				}
 				else if (currentBuild.currentResult == 'UNSTABLE') {
-					echo "UNSTABLE!"
+					mail bcc: '', body: "<b>The build unstable!</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Notify on ALWAYS section: Project name -> ${env.JOB_NAME}", to: "changdt.eps@gmail.com";
 				}
 				else {
-					echo "SUCCESSFUL!"
+					mail bcc: '', body: "<b>The build successful!</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Notify on ALWAYS section: Project name -> ${env.JOB_NAME}", to: "changdt.eps@gmail.com";
 				}
 			}
 		}
