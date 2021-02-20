@@ -21,9 +21,11 @@ pipeline {
 				echo "Deploying the application..."
 			}
 		}
+		// Option 1: sending email
 		stage("Email Notification"){
 			steps {
-				mail bcc: '', body: 'Deployment result', cc: '', from: '', replyTo: '', subject: 'Testing sending email', to: 'changdt.eps@gmail.com'
+				// mail bcc: '', body: 'Deployment result', cc: '', from: '', replyTo: '', subject: 'Testing sending email', to: 'changdt.eps@gmail.com'
+				mail bcc: '', body: "<b>The build successful!</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "changdt.eps@gmail.com";
 			}
 		}
 	}
@@ -45,10 +47,13 @@ pipeline {
 		aborted {
 			echo "Pipeline has been aborted. Usually due to the pipeline being manually aborted"
 		}
+
+		// Option 2: sending email when the build faied
 		failure {
 			// echo "Pipeline has been failed."
 			mail bcc: '', body: "<b>Failure!</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "changdt.eps@gmail.com";
 		}
+		// Option 2: sending email when the build passed
 		success {
 			// echo "Successful!"
 			mail bcc: '', body: "<b>Successful!</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "changdt.eps@gmail.com";
