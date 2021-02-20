@@ -32,6 +32,7 @@ pipeline {
 	}
 
 	post {
+		// Option 3: sending email via always section
 		always {
 			// echo "Always echo this line"
 			// emailext body: 'testing',subject: 'testing', to: 'changdt.eps@gmail.com'
