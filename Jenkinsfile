@@ -25,6 +25,7 @@ pipeline {
 		stage("Email Notification"){
 			steps {
 				// mail bcc: '', body: 'Deployment result', cc: '', from: '', replyTo: '', subject: 'Testing sending email', to: 'changdt.eps@gmail.com'
+
 				mail bcc: '', body: "<b>The build successful!</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Notify on Stage: Project name -> ${env.JOB_NAME}", to: "changdt.eps@gmail.com";
 			}
 		}
@@ -32,8 +33,18 @@ pipeline {
 
 	post {
 		always {
-			echo "Always echo this line"
+			// echo "Always echo this line"
 			// emailext body: 'testing',subject: 'testing', to: 'changdt.eps@gmail.com'
+			script {
+				if (currentBuild.currentResult == 'FAILURE') {
+					echo "FAILURE!"
+				}
+				else if (currentBuild.currentResult == 'UNSTABLE') {
+					echo "UNSTABLE!"
+				}
+				else {
+					echo "SUCCESSFUL!"
+				}
 		}
 		changed {
 			echo "There are some changes from previous run."
