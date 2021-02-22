@@ -14,7 +14,7 @@ pipeline {
 		stage("Test"){
 			when {
 				expression {
-					BRANCH_NAME == 'feature/condition' || BRANCH_NAME == 'feature/sendingEmail'
+					BRANCH_NAME == 'feature/sendingEmail'
 				}
 			}
 			steps {
